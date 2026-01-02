@@ -12,7 +12,7 @@ export default async function Header({ white }) {
 
   return (
     <>
-      <header className="fixed left-1/2 top-6 z-50 hidden w-[95%] max-w-5xl -translate-x-1/2 transform items-center justify-between rounded-full border border-white/10 bg-darkest/80 px-6 py-3 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-white/20 md:flex">
+      <header className="fixed left-1/2 top-6 z-50 hidden w-[95%] max-w-[75rem] -translate-x-1/2 transform items-center justify-between rounded-full border border-white/10 bg-darkest/80 px-6 py-3 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-white/20 md:flex">
         <Link
           href="/"
           className="relative block w-32 transition-transform duration-300 hover:scale-105"
