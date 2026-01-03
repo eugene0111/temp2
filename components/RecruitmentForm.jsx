@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { signOut } from "next-auth/react"; //
+import { signOut } from "next-auth/react";
 import RenderImage from "./RenderImage";
 import { submitApplication } from "@/app/recruitment/actions";
 
@@ -66,7 +66,7 @@ export default function RecruitmentForm({ positions, user }) {
   }
 
   return (
-    <div className="bg-darker/50 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+    <div className="bg-darker/50 p-8 rounded-2xl mb-12 border border-white/10 backdrop-blur-sm">
       <div className="mb-8">
         <label className="block text-sm font-medium text-gray-400 mb-2">Select Position</label>
         <select
@@ -87,8 +87,8 @@ export default function RecruitmentForm({ positions, user }) {
             <input
               name="name"
               type="text"
-              defaultValue={user?.name || ""} //
-              readOnly // Prevents user edits while allowing form data capture
+              defaultValue={user?.name || ""}
+              readOnly 
               className="bg-darkest/50 border border-white/5 rounded-lg px-4 py-3 text-gray-400 w-full outline-none cursor-not-allowed"
               required
             />
@@ -98,7 +98,7 @@ export default function RecruitmentForm({ positions, user }) {
             <input
               name="email"
               type="email"
-              defaultValue={user?.email || ""} //
+              defaultValue={user?.email || ""}
               readOnly
               className="bg-darkest/50 border border-white/5 rounded-lg px-4 py-3 text-gray-400 w-full outline-none cursor-not-allowed"
               required

@@ -4,13 +4,19 @@ import LoginSection from "@/components/LoginSection";
 import LogoutButton from "@/components/LogoutButton";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { notFound } from "next/navigation";
 
 export default async function RecruitmentPage() {
   const session = await getServerSession(authOptions);
   const positions = await fetchData("recruitment");
+  const activePositions = positions?.filter(pos => pos.isActive === true) || [];
+
+  if (activePositions.length === 0) {
+    notFound();
+  }
 
   return (
-    <main className="min-h-screen -mb-52 px-6 max-w-4xl mx-auto">
+    <main className="min-h-screen pt-32 px-6 max-w-4xl mx-auto">
       {!session ? (
         <LoginSection />
       ) : (
@@ -29,8 +35,8 @@ export default async function RecruitmentPage() {
             </div>
           </div>
           
-          {positions && positions.length > 0 ? (
-            <RecruitmentForm positions={positions} user={session.user} />
+          {activePositions && activePositions.length > 0 ? (
+            <RecruitmentForm positions={activePositions} user={session.user} />
           ) : (
             <div className="p-8 rounded-2xl border border-neon-green/20 bg-neon-green/5 text-center">
               <p className="text-neon-green font-medium">We are not currently recruiting. Check back later!</p>

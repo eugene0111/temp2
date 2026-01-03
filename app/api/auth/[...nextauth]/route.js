@@ -8,8 +8,17 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  callbacks: {
+    async signIn({ user }) {
+      if (user.email && user.email.endsWith("@nsut.ac.in")) {
+        return true;
+      }
+      return "/auth/denied";
+    }
+  },
   pages: {
-    signIn: '/recruitment',
+    signIn: "/recruitment",
+    error: "/auth/denied"
   },
   secret: process.env.NEXT_AUTH_SECRET,
 };
